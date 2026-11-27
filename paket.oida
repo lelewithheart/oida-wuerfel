@@ -1,0 +1,43 @@
+# oida-wuerfel: ein kleines Paket zum Würfeln. Es ist vor allem dazu da, "oida hol" auszuprobieren.
+#
+#   oida hol lelewithheart/oida-wuerfel
+#
+#   BRAUCH "oida-wuerfel" OIS w OIDA
+#   SCHREIB(w.wuaf(), w.mehrmois(3), w.münze()) OIDA
+
+BRAUCH "teile/zöhn.oida" OIDA
+
+# Die Seiten eines gewöhnlichen Würfels. GHEIM: gilt nur in dieser Datei.
+GHEIM FIX SEITN = 6 OIDA
+
+# Ein Wurf mit einem Würfel, der so viele Seiten hat.
+FUNKTIAUN wuaf_mit(seitn ZOI) GIBT ZRUCK ZOI
+    GIB ZRUCK ZUFOI(1, seitn) OIDA
+PASST SCHO
+
+# Ein Wurf mit einem gewöhnlichen Würfel: 1 bis 6.
+FUNKTIAUN wuaf() GIBT ZRUCK ZOI
+    GIB ZRUCK wuaf_mit(SEITN) OIDA
+PASST SCHO
+
+# Mehrere Würfe mit einem gewöhnlichen Würfel.
+FUNKTIAUN mehrmois(wia_oft ZOI) GIBT ZRUCK LISTN VON ZOI
+    SOG AU würf LISTN VON ZOI = [] OIDA
+    FIA i VON 1 BIS wia_oft TUA
+        HAU EINE(würf, wuaf()) OIDA
+    PASST SCHO
+    GIB ZRUCK würf OIDA
+PASST SCHO
+
+# Die Summe von mehreren Würfen: summe_von(2) sind zwei Würfel zusammen.
+FUNKTIAUN summe_von(wia_oft ZOI) GIBT ZRUCK ZOI
+    GIB ZRUCK zamm_zöhn(mehrmois(wia_oft)) OIDA
+PASST SCHO
+
+# Kopf oder Zahl.
+FUNKTIAUN münze() GIBT ZRUCK KETTN
+    WENN ZUFOI(0, 1) == 0 DAUN
+        GIB ZRUCK "Kopf" OIDA
+    PASST SCHO
+    GIB ZRUCK "Zoi" OIDA
+PASST SCHO

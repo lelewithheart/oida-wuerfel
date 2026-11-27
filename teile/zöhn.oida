@@ -1,0 +1,8 @@
+# Gehört zu oida-wuerfel: Zusammenzählen. (Zeigt, dass ein Paket aus mehreren Dateien bestehen kann.)
+FUNKTIAUN zamm_zöhn(zoin LISTN VON ZOI) GIBT ZRUCK ZOI
+    SOG AU summe = 0 OIDA
+    FIA JEDE z IN zoin TUA
+        summe += z OIDA
+    PASST SCHO
+    GIB ZRUCK summe OIDA
+PASST SCHO
